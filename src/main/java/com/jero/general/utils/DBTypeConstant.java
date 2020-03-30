@@ -1,7 +1,7 @@
 package com.jero.general.utils;
 
 /**
- * 数据库连接类
+ * 数据库连接常量
  *
  * @Author lixuetao
  * @Date 2020/3/30
