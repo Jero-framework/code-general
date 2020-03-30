@@ -3,13 +3,15 @@ package ${package.Controller};
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import ${package.Entity}.${entity}EO;
-import com.jero.auth.${entity}.service.${entity}Service;
+import ${package.Service}.${entity}Service;
 import com.jero.core.controller.BaseController;
 import com.jero.http.ResponseMessage;
 import com.jero.http.Result;
 import com.jero.http.page.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,12 +33,12 @@ import java.util.List;
 @Api("${table.comment!}接口")
 @RestController
 @RequestMapping("/${r'${restPath}'}/<#if controllerMappingHyphenStyle??>${controllerMappingHyphen}<#else>${table.entityPath}</#if>")
-public class ${table.controllerName} extends ${superControllerClass}<${entity}EO> {
+public class ${table.controllerName} extends BaseController<${entity}EO> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(${table.controllerName}.class);
 
     @Autowired
-    private ${table.serviceName} ${entity}Service;
+    private ${table.serviceName} ${"${entity}"?uncap_first}Service;
 
     @ApiOperation("|${entity}EO|查询${table.comment!}列表")
     @GetMapping(value = "/list", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -93,7 +95,7 @@ public class ${table.controllerName} extends ${superControllerClass}<${entity}EO
 
     @Override
     protected IService<${entity}EO> getService() {
-        return ${entity}Service;
+        return ${"${entity}"?uncap_first}Service;
     }
 
 }

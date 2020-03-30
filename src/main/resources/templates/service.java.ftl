@@ -1,6 +1,7 @@
 package ${package.Service};
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import ${package.Entity}.${entity}EO;
 
 /**
 * ${table.comment!}服务接口

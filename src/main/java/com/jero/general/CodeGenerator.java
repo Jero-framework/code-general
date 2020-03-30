@@ -32,7 +32,7 @@ public class  CodeGenerator {
 
     private static String moduleName = "auth.user";    //模块名称
     private static String author = "hzwlsoft";    //作者
-    private static String projectPath = "C:\\idea\\test";    //代码生成路径
+    private static String projectPath = "C:\\idea\\Jero\\auth-user";    //代码生成路径
     private static String[] tableNames = new String[] {"SYS_USER"};    //需要生成代码的数据库表名
     private static String[] tablePrefix = new String[] { "SYS_", "TS_", "V_" };    //表前缀
 
@@ -138,7 +138,7 @@ public class  CodeGenerator {
         strategy.setEntityColumnConstant(true);
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setEntityLombokModel(true);
+        strategy.setEntityLombokModel(false);
         strategy.setEntitySerialVersionUID(true);
         strategy.setInclude(tableNames);
         // 公共父类
