@@ -42,14 +42,14 @@ public class ${table.controllerName} extends BaseController<${entity}EO> {
 
     @ApiOperation("|${entity}EO|查询${table.comment!}列表")
     @GetMapping(value = "/list", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseMessage<List<${entity}EO>> getList(@RequestBody ${entity}EO ${entity}){
+    public ResponseMessage<List<${entity}EO>> getList(@RequestBody(required = false) ${entity}EO ${entity}){
         List<${entity}EO> ${entity}List = super.list(${entity});
         return Result.success(${entity}List);
     }
 
     @ApiOperation("|${entity}EO|查询${table.comment!}分页")
     @GetMapping(value = "/page", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseMessage<PageInfo<${entity}EO>> getPage(@RequestBody ${entity}EO ${entity}, PageInfo pageInfo){
+    public ResponseMessage<PageInfo<${entity}EO>> getPage(@RequestBody(required = false) ${entity}EO ${entity}, PageInfo pageInfo){
         PageInfo<${entity}EO> ${entity}Page = super.page(pageInfo, ${entity});
         return Result.success(${entity}Page);
     }
