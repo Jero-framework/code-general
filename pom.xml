@@ -18,10 +18,10 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <freemarker.version>2.3.30</freemarker.version>
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>com.jero</groupId>
             <artifactId>web-core</artifactId>
@@ -34,10 +34,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>${freemarker.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

@@ -55,7 +55,7 @@ public class ${table.controllerName} extends BaseController<${entity}EO> {
     }
 
     @ApiOperation("|${entity}EO|查询${table.comment!}详情")
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/get/{id}")
     public ResponseMessage<${entity}EO> get(@NotNull @PathVariable Serializable id){
         return Result.success(super.getById(id));
     }

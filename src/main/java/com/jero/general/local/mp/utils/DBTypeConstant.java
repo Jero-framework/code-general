@@ -1,4 +1,4 @@
-package com.jero.general.utils;
+package com.jero.general.local.mp.utils;
 
 /**
  * 数据库连接常量
