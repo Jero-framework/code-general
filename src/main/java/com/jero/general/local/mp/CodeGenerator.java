@@ -29,15 +29,15 @@ import java.util.Scanner;
  **/
 public class  CodeGenerator {
 
-    private static String moduleName = "enroll";    //模块名称
+    private static String moduleName = "auth.user";    //模块名称
     private static String author = "lixuetao";    //作者
-    private static String projectPath = "E:\\workstation_idea\\postgraduate-enroll";    //代码生成路径
-    private static String[] tableNames = new String[] {"hzwl_college", "hzwl_enroll", "hzwl_professional"};    //需要生成代码的数据库表名
+    private static String projectPath = "C:\\idea\\Jero\\auth-user";    //代码生成路径
+    private static String[] tableNames = new String[] {"sys_user", "hzwl_enroll"};    //需要生成代码的数据库表名
     private static String[] tablePrefix = new String[] { "SYS_", "TS_", "V_" , "hzwl_"};    //表前缀
 
     private static String dbType = DBTypeConstant.MYSQL_8; //数据库类型，包含MYSQL_5、MYSQL_8、ORACLE三种
 
-    private static String url = "jdbc:mysql://10.0.3.44:3306/postgraduater_enroll?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC";    //数据源url
+    private static String url = "jdbc:mysql://localhost:3306/mp?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC";    //数据源url
     private static String username = "root";    //数据源连接用户名
     private static String password = "123456";    //数据源连接密码
 
