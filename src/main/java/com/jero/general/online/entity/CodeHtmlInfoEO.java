@@ -7,6 +7,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.jero.mp.entity.BaseEntity;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+
 /**
 * 表对应的html页面属性实体
 *
@@ -22,34 +25,44 @@ public class CodeHtmlInfoEO extends BaseEntity<CodeHtmlInfoEO>{
 
     @ApiModelProperty(value = "字段名")
     @TableField("field_name")
+    @NotNull(message = "请填写字段名")
+    @Max(value = 30, message = "字段名仅能为0-30位任意字符")
     private String fieldName;
 
     @ApiModelProperty(value = "字段描述")
     @TableField("field_description")
+    @Max(value = 200, message = "字段备注仅能为0-200位任意字符")
     private String fieldDescription;
 
     @ApiModelProperty(value = "是否只读，0为否，1为是")
     @TableField("is_readonly")
+    @NotNull(message = "请选择是否只读")
     private Integer isReadonly;
 
-    @ApiModelProperty(value = "字段控件，1为文本框，2为密码框，3为单选框，4为多选框，5为日期，6为时间，7为文件，8为图片，9为多行文本，10为下拉框、11为下拉多选框、12为树控件、13为部门选择器、14为用户选择器、15位省市区组件")
+    @ApiModelProperty(value = "字段控件，1为文本框，2为密码框，3为单选框，4为多选框，5为日期，6为时间，7为文件，8为图片，9为多行文本，" +
+            "10为下拉框、11为下拉多选框、12为树控件、13为部门选择器、14为用户选择器、15位省市区组件")
     @TableField("field_widget")
+    @NotNull(message = "请选择字段对应的控件")
     private Integer fieldWidget;
 
     @ApiModelProperty(value = "字段对应字典值，或字典表。以dic:开头，即寻找字典表")
     @TableField("filed_dic")
+    @Max(value = 2000, message = "字段字典值仅能为0-2000位任意字符")
     private String filedDic;
 
     @ApiModelProperty(value = "默认控件显示在页面的长度")
     @TableField("filed_length")
+    @NotNull(message = "请填写字段控件长度")
     private Integer filedLength;
 
-    @ApiModelProperty(value = "是否查询，0为否，1位是")
+    @ApiModelProperty(value = "是否查询，0为否，1为是")
     @TableField("is_query")
+    @NotNull(message = "请选择字段是否需要查询")
     private Integer isQuery;
 
     @ApiModelProperty(value = "是否必填，0为否，1为是")
     @TableField("is_required")
+    @NotNull(message = "请选择字段是否必填")
     private Integer isRequired;
 
     @ApiModelProperty(value = "字段校验规则，0为正则表达式，1为唯一校验、2为网址、3为电子邮件、4为手机号码、5为邮政编码、6为字母、7为数字、8为整数、9为非标点字符")
@@ -58,6 +71,7 @@ public class CodeHtmlInfoEO extends BaseEntity<CodeHtmlInfoEO>{
 
     @ApiModelProperty(value = "正则表达式，valid_rule为0时，此处必填")
     @TableField("regex")
+    @Max(value = 2000, message = "正则表达式仅能为0-2000位任意字符")
     private String regex;
 
     public Long getId() {

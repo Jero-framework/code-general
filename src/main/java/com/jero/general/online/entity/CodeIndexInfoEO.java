@@ -7,6 +7,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.jero.mp.entity.BaseEntity;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+
 /**
 * 表对应的索引信息实体
 *
@@ -21,14 +24,18 @@ public class CodeIndexInfoEO extends BaseEntity<CodeIndexInfoEO>{
     private Long id;
 
     @TableField("index_name")
+    @NotNull(message = "索引名称不能为空")
+    @Max(value = 30, message = "索引名称仅能为0-30位字符")
     private String indexName;
 
     @ApiModelProperty(value = "索引字段，选择本表中的字段名")
     @TableField("index_filed")
+    @NotNull(message = "索引字段不能为空")
     private Long indexFiled;
 
     @ApiModelProperty(value = "normal、unique")
     @TableField("index_type")
+    @NotNull(message = "索引类型不能为空")
     private String indexType;
 
     public Long getId() {
