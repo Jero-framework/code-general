@@ -20,7 +20,6 @@ import com.jero.mp.entity.BaseEntity;
 </#if>
 @TableName("${table.name}")
 public class ${entity}EO extends BaseEntity<${entity}EO>{
-
 <#list table.fields as field>
     <#if field.keyFlag>
         <#assign keyPropertyName="${field.propertyName}"/>

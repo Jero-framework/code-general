@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jero.general.online.dao.CodeHtmlInfoMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.jero.general.online.entity.CodeHtmlInfoEO">
+                    <id column="id" property="id" />
+                    <result column="field_name" property="fieldName" />
+                    <result column="field_description" property="fieldDescription" />
+                    <result column="is_readonly" property="isReadonly" />
+                    <result column="field_widget" property="fieldWidget" />
+                    <result column="filed_dic" property="filedDic" />
+                    <result column="filed_length" property="filedLength" />
+                    <result column="is_query" property="isQuery" />
+                    <result column="is_required" property="isRequired" />
+                    <result column="valid_rule" property="validRule" />
+                    <result column="regex" property="regex" />
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id, field_name, field_description, is_readonly, field_widget, filed_dic, filed_length, is_query, is_required, valid_rule, regex
+        </sql>
+
+</mapper>

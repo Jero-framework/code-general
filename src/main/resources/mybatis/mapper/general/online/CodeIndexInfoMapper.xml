@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jero.general.online.dao.CodeIndexInfoMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.jero.general.online.entity.CodeIndexInfoEO">
+                    <id column="id" property="id" />
+                    <result column="index_name" property="indexName" />
+                    <result column="index_filed" property="indexFiled" />
+                    <result column="index_type" property="indexType" />
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id, index_name, index_filed, index_type
+        </sql>
+
+</mapper>

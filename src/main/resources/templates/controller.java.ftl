@@ -27,7 +27,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
-* @Description ${table.comment!}用户控制器
+* @Description ${table.comment!}控制器
 * @Author ${author}
 * @Date ${date}
 **/
