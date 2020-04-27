@@ -75,7 +75,7 @@ public class ${table.controllerName} extends BaseController<${entity}EO> {
 
     @ApiOperation("|${entity}EO|删除${table.comment!}")
     @PostMapping(value = "/delete/{ids}")
-    public ResponseMessage<Boolean> modify(@NotNull @PathVariable Serializable... ids){
+    public ResponseMessage<Boolean> delete(@NotNull @PathVariable Serializable... ids){
         return Result.success(super.deleteBatchIds(ids));
     }
 

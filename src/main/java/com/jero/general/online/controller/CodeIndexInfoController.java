@@ -75,7 +75,7 @@ public class CodeIndexInfoController extends BaseController<CodeIndexInfoEO> {
 
     @ApiOperation("|CodeIndexInfoEO|删除表对应的索引信息")
     @PostMapping(value = "/delete/{ids}")
-    public ResponseMessage<Boolean> modify(@NotNull @PathVariable Serializable... ids){
+    public ResponseMessage<Boolean> delete(@NotNull @PathVariable Serializable... ids){
         return Result.success(super.deleteBatchIds(ids));
     }
 

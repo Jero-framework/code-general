@@ -75,7 +75,7 @@ public class CodeBaseInfoController extends BaseController<CodeBaseInfoEO> {
 
     @ApiOperation("|CodeBaseInfoEO|删除代码生成基本字段")
     @PostMapping(value = "/delete/{ids}")
-    public ResponseMessage<Boolean> modify(@NotNull @PathVariable Serializable... ids){
+    public ResponseMessage<Boolean> delete(@NotNull @PathVariable Serializable... ids){
         return Result.success(super.deleteBatchIds(ids));
     }
 

@@ -75,7 +75,7 @@ public class CodeDatabaseInfoController extends BaseController<CodeDatabaseInfoE
 
     @ApiOperation("|CodeDatabaseInfoEO|删除表对应的数据库属性")
     @PostMapping(value = "/delete/{ids}")
-    public ResponseMessage<Boolean> modify(@NotNull @PathVariable Serializable... ids){
+    public ResponseMessage<Boolean> delete(@NotNull @PathVariable Serializable... ids){
         return Result.success(super.deleteBatchIds(ids));
     }
 

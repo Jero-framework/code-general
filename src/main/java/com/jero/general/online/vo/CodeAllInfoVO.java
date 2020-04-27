@@ -5,6 +5,8 @@ import com.jero.general.online.entity.CodeDatabaseInfoEO;
 import com.jero.general.online.entity.CodeHtmlInfoEO;
 import com.jero.general.online.entity.CodeIndexInfoEO;
 
+import java.util.List;
+
 /**
  * @Description code全部数据的VO
  * @Author lixuetao
@@ -14,11 +16,11 @@ public class CodeAllInfoVO {
 
     private CodeBaseInfoEO baseInfoEO;
 
-    private CodeDatabaseInfoEO databaseInfoEO;
+    private List<CodeDatabaseInfoEO> databaseInfoEOS;
 
-    private CodeHtmlInfoEO htmlInfoEO;
+    private List<CodeHtmlInfoEO> htmlInfoEOS;
 
-    private CodeIndexInfoEO indexInfoEO;
+    private List<CodeIndexInfoEO> indexInfoEOS;
 
     public CodeBaseInfoEO getBaseInfoEO() {
         return baseInfoEO;
@@ -28,27 +30,27 @@ public class CodeAllInfoVO {
         this.baseInfoEO = baseInfoEO;
     }
 
-    public CodeDatabaseInfoEO getDatabaseInfoEO() {
-        return databaseInfoEO;
+    public List<CodeDatabaseInfoEO> getDatabaseInfoEOS() {
+        return databaseInfoEOS;
     }
 
-    public void setDatabaseInfoEO(CodeDatabaseInfoEO databaseInfoEO) {
-        this.databaseInfoEO = databaseInfoEO;
+    public void setDatabaseInfoEOS(List<CodeDatabaseInfoEO> databaseInfoEOS) {
+        this.databaseInfoEOS = databaseInfoEOS;
     }
 
-    public CodeHtmlInfoEO getHtmlInfoEO() {
-        return htmlInfoEO;
+    public List<CodeHtmlInfoEO> getHtmlInfoEOS() {
+        return htmlInfoEOS;
     }
 
-    public void setHtmlInfoEO(CodeHtmlInfoEO htmlInfoEO) {
-        this.htmlInfoEO = htmlInfoEO;
+    public void setHtmlInfoEOS(List<CodeHtmlInfoEO> htmlInfoEOS) {
+        this.htmlInfoEOS = htmlInfoEOS;
     }
 
-    public CodeIndexInfoEO getIndexInfoEO() {
-        return indexInfoEO;
+    public List<CodeIndexInfoEO> getIndexInfoEOS() {
+        return indexInfoEOS;
     }
 
-    public void setIndexInfoEO(CodeIndexInfoEO indexInfoEO) {
-        this.indexInfoEO = indexInfoEO;
+    public void setIndexInfoEOS(List<CodeIndexInfoEO> indexInfoEOS) {
+        this.indexInfoEOS = indexInfoEOS;
     }
 }

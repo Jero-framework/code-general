@@ -39,9 +39,25 @@ public class CodeAllInfoServiceImpl implements CodeAllInfoService {
 
     public void add(CodeAllInfoVO allInfoVO){
         baseInfoService.save(allInfoVO.getBaseInfoEO());
-        databaseInfoService.save(allInfoVO.getDatabaseInfoEO());
-        htmlInfoService.save(allInfoVO.getHtmlInfoEO());
-        indexInfoService.save(allInfoVO.getIndexInfoEO());
+        //得到基础信息的id，赋予给其他的字段
+        Long primaryKey = allInfoVO.getBaseInfoEO().getId();
+
+        allInfoVO.getDatabaseInfoEOS().forEach(item -> item.setBaseInfoId(primaryKey));
+        databaseInfoService.saveBatch(allInfoVO.getDatabaseInfoEOS());
+
+        allInfoVO.getHtmlInfoEOS().forEach(item -> item.setBaseInfoId(primaryKey));
+        htmlInfoService.saveBatch(allInfoVO.getHtmlInfoEOS());
+
+        allInfoVO.getIndexInfoEOS().forEach(item -> item.setBaseInfoId(primaryKey));
+        indexInfoService.saveBatch(allInfoVO.getIndexInfoEOS());
+    }
+
+    /**
+     * 删掉所有附表数据，重新添加
+     * @param allInfoVO
+     */
+    public void modify(CodeAllInfoVO allInfoVO){
+
     }
 
 }

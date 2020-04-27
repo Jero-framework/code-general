@@ -74,6 +74,9 @@ public class CodeHtmlInfoEO extends BaseEntity<CodeHtmlInfoEO>{
     @Max(value = 2000, message = "正则表达式仅能为0-2000位任意字符")
     private String regex;
 
+    @TableField("base_info_id")
+    private Long baseInfoId;
+
     public Long getId() {
         return id;
     }
@@ -160,6 +163,14 @@ public class CodeHtmlInfoEO extends BaseEntity<CodeHtmlInfoEO>{
 
     public void setRegex(String regex) {
         this.regex = regex;
+    }
+
+    public Long getBaseInfoId() {
+        return baseInfoId;
+    }
+
+    public void setBaseInfoId(Long baseInfoId) {
+        this.baseInfoId = baseInfoId;
     }
 
     @Override

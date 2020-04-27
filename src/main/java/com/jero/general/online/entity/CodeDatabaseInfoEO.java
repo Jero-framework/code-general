@@ -56,6 +56,9 @@ public class CodeDatabaseInfoEO extends BaseEntity<CodeDatabaseInfoEO>{
     @TableField("is_null")
     private Integer isNull;
 
+    @TableField("base_info_id")
+    private Long baseInfoId;
+
     public Long getId() {
         return id;
     }
@@ -118,6 +121,14 @@ public class CodeDatabaseInfoEO extends BaseEntity<CodeDatabaseInfoEO>{
 
     public void setIsNull(Integer isNull) {
         this.isNull = isNull;
+    }
+
+    public Long getBaseInfoId() {
+        return baseInfoId;
+    }
+
+    public void setBaseInfoId(Long baseInfoId) {
+        this.baseInfoId = baseInfoId;
     }
 
     @Override

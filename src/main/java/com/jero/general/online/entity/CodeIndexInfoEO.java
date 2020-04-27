@@ -38,6 +38,9 @@ public class CodeIndexInfoEO extends BaseEntity<CodeIndexInfoEO>{
     @NotNull(message = "索引类型不能为空")
     private String indexType;
 
+    @TableField("base_info_id")
+    private Long baseInfoId;
+
     public Long getId() {
         return id;
     }
@@ -68,6 +71,14 @@ public class CodeIndexInfoEO extends BaseEntity<CodeIndexInfoEO>{
 
     public void setIndexType(String indexType) {
         this.indexType = indexType;
+    }
+
+    public Long getBaseInfoId() {
+        return baseInfoId;
+    }
+
+    public void setBaseInfoId(Long baseInfoId) {
+        this.baseInfoId = baseInfoId;
     }
 
     @Override

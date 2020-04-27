@@ -75,7 +75,7 @@ public class CodeHtmlInfoController extends BaseController<CodeHtmlInfoEO> {
 
     @ApiOperation("|CodeHtmlInfoEO|删除表对应的html页面属性")
     @PostMapping(value = "/delete/{ids}")
-    public ResponseMessage<Boolean> modify(@NotNull @PathVariable Serializable... ids){
+    public ResponseMessage<Boolean> delete(@NotNull @PathVariable Serializable... ids){
         return Result.success(super.deleteBatchIds(ids));
     }
 
