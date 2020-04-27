@@ -11,4 +11,6 @@ public interface CodeAllInfoService {
 
     public void add(CodeAllInfoVO allInfoVO);
 
+    public void modify(CodeAllInfoVO allInfoVO);
+
 }

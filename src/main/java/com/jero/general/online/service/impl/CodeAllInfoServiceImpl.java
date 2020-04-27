@@ -57,7 +57,31 @@ public class CodeAllInfoServiceImpl implements CodeAllInfoService {
      * @param allInfoVO
      */
     public void modify(CodeAllInfoVO allInfoVO){
+        baseInfoService.updateById(allInfoVO.getBaseInfoEO());
 
+        //得到基础信息的id，赋予首次添加的数据
+        Long primaryKey = allInfoVO.getBaseInfoEO().getId();
+
+        allInfoVO.getDatabaseInfoEOS().forEach(item -> {
+            if (item.getBaseInfoId() == null){
+                item.setBaseInfoId(primaryKey);
+            }
+        });
+        databaseInfoService.saveOrUpdateBatch(allInfoVO.getDatabaseInfoEOS());
+
+        allInfoVO.getHtmlInfoEOS().forEach(item -> {
+            if (item.getBaseInfoId() == null){
+                item.setBaseInfoId(primaryKey);
+            }
+        });
+        htmlInfoService.saveOrUpdateBatch(allInfoVO.getHtmlInfoEOS());
+
+        allInfoVO.getIndexInfoEOS().forEach(item -> {
+            if (item.getBaseInfoId() == null){
+                item.setBaseInfoId(primaryKey);
+            }
+        });
+        indexInfoService.saveOrUpdateBatch(allInfoVO.getIndexInfoEOS());
     }
 
 }

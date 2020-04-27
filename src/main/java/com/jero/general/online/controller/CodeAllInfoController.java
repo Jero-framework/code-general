@@ -71,7 +71,7 @@ public class CodeAllInfoController extends BaseController<CodeBaseInfoEO> {
     @ApiOperation("|CodeAllInfoVO|修改代码生成器所有字段")
     @PostMapping(value = "/modify", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseMessage<Boolean> modify(@RequestBody @Valid CodeAllInfoVO allInfoVO){
-
+        allInfoService.modify(allInfoVO);
         return Result.success();
     }
 
