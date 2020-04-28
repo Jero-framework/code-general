@@ -1,6 +1,6 @@
 package com.jero.general.online.generate.service;
 
-import com.jero.general.online.generate.pojo.DataBasePOJO;
+import com.jero.general.online.generate.meta.DataFieldMeta;
 
 /**
  * 数据表操作接口，提供
@@ -11,24 +11,24 @@ public interface DBTableHandler {
 
     /**
      * 获取添加列的sql
-     * @param dataBase
+     * @param fieldMeta
      * @return
      */
-    String getAddFieldSql(DataBasePOJO dataBase);
+    String getAddFieldSql(DataFieldMeta fieldMeta);
 
     /**
      * 获取重命名字段sql
-     * @param dataBase
+     * @param fieldMeta
      * @return
      */
-    String getRenameFieldNameSql(DataBasePOJO dataBase);
+    String getRenameFieldNameSql(DataFieldMeta fieldMeta);
 
     /**
      * 获取更新字段的sql
-     * @param dataBase
+     * @param fieldMeta
      * @return
      */
-    String getUpdateFieldSql(DataBasePOJO dataBase);
+    String getUpdateFieldSql(DataFieldMeta fieldMeta);
 
     /**
      * 根据数据库字段类型获取对应的Java数据类型
@@ -54,10 +54,10 @@ public interface DBTableHandler {
 
     /**
      * 获取添加注释的sql
-     * @param dataBase
+     * @param fieldMeta
      * @return
      */
-    String getCommentSql(DataBasePOJO dataBase);
+    String getCommentSql(DataFieldMeta fieldMeta);
 
     /**
      * 获取删除索引的sql
