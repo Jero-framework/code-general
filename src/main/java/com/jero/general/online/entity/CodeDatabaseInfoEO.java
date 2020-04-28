@@ -52,7 +52,7 @@ public class CodeDatabaseInfoEO extends BaseEntity<CodeDatabaseInfoEO>{
     @TableField("is_primary_key")
     private Integer isPrimaryKey;
 
-    @ApiModelProperty(value = "是否可以为null，0位否，1为是")
+    @ApiModelProperty(value = "是否可以为null，0为否，1为是")
     @TableField("is_null")
     private Integer isNull;
 
