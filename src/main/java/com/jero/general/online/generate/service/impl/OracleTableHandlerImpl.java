@@ -6,16 +6,15 @@ import com.jero.general.online.generate.meta.DataFieldMeta;
 import com.jero.general.online.generate.service.DBTableHandler;
 
 /**
- * mysql数据库针对字段操作sql的具体实现
- *
+ * @Description oracle数据库针对字段操作sql的具体实现
  * @Author lixuetao
- * @Date 2020/4/28
+ * @Date 2020/4/29
  **/
-public class MysqlTableHandlerImpl implements DBTableHandler {
+public class OracleTableHandlerImpl implements DBTableHandler{
 
     @Override
     public String getAddFieldSql(DataFieldMeta fieldMeta) {
-        StringBuilder sql = new StringBuilder("ADD COLUMN ")
+        StringBuilder sql = new StringBuilder("ADD ")
                 .append(handlerFieldMetaToSql(fieldMeta))
                 .append(";");
         return sql.toString();
@@ -23,18 +22,19 @@ public class MysqlTableHandlerImpl implements DBTableHandler {
 
     @Override
     public String getRenameFieldNameSql(DataFieldMeta fieldMeta) {
-        StringBuilder sql = new StringBuilder("CHANGE COLUMN ")
+        StringBuilder sql = new StringBuilder("RENAME COLUMN ")
                 .append(fieldMeta.getOldFieldName())
-                .append(" ")
-                .append(handlerFieldMetaToSql(fieldMeta))
+                .append(" TO ")
+                .append(fieldMeta.getFieldName())
                 .append(";");
         return sql.toString();
     }
 
     @Override
     public String getUpdateFieldSql(DataFieldMeta fieldMeta) {
-        StringBuilder sql = new StringBuilder("MODIFY COLUMN")
-                .append(handlerFieldMetaToSql(fieldMeta));
+        StringBuilder sql = new StringBuilder("MODIFY ")
+                .append(handlerFieldMetaToSql(fieldMeta))
+                .append(";");
         return sql.toString();
     }
 
@@ -45,8 +45,8 @@ public class MysqlTableHandlerImpl implements DBTableHandler {
 
     @Override
     public String getDropTableSql(String tableName) {
-        StringBuilder sql = new StringBuilder("DROP TABLE IF EXISTS ")
-                .append(tableName)
+        StringBuilder sql = new StringBuilder("DROP TABLE ")
+                .append(tableName.toLowerCase())
                 .append(";");
         return sql.toString();
     }
@@ -54,30 +54,35 @@ public class MysqlTableHandlerImpl implements DBTableHandler {
     @Override
     public String getDropColumnSql(String fieldName) {
         StringBuilder sql = new StringBuilder("DROP COLUMN ")
-                .append(fieldName)
+                .append(fieldName.toUpperCase())
                 .append(";");
         return sql.toString();
     }
 
     @Override
     public String getCommentSql(DataFieldMeta fieldMeta) {
-        return null;
+        StringBuilder sql = new StringBuilder("COMMENT ON COLUMN ")
+                .append(fieldMeta.getTableName())
+                .append(fieldMeta.getFieldName())
+                .append(" IS ")
+                .append(fieldMeta.getFieldComment())
+                .append(";");
+        return sql.toString();
     }
 
     @Override
     public String getDropIndexsSql(String indexName, String tableName) {
         StringBuilder sql = new StringBuilder("DROP INDEX ")
                 .append(indexName)
-                .append(" ON ")
-                .append(tableName);
+                .append(";");
         return sql.toString();
     }
 
     @Override
     public String countIndex(String indexName, String tableName) {
-        StringBuilder sql = new StringBuilder("select COUNT(*) from information_schema.statistics where table_name = '")
+        StringBuilder sql = new StringBuilder("select COUNT(*) from user_indexes where TABLE_NAME = '")
                 .append(tableName)
-                .append("' AND index_name = '")
+                .append("' AND INDEX_NAME = '")
                 .append(indexName)
                 .append("'");
         return sql.toString();
@@ -92,64 +97,47 @@ public class MysqlTableHandlerImpl implements DBTableHandler {
         StringBuilder sql = new StringBuilder();
         if ("string".equalsIgnoreCase(dataFieldMeta.getFieldType())){
             sql.append(dataFieldMeta.getFieldName())
-                    .append(" varchar(")
+                    .append(" varchar2(")
                     .append(dataFieldMeta.getFieldSize())
                     .append(") ");
         } else if ("date".equalsIgnoreCase(dataFieldMeta.getFieldType())){
             sql.append(dataFieldMeta.getFieldName())
-                    .append(" datetime ");
-        } else if ("Integer".equalsIgnoreCase(dataFieldMeta.getFieldType())){
+                    .append(" date ");
+        } else if ("Integer".equalsIgnoreCase(dataFieldMeta.getFieldType()) || "Long".equalsIgnoreCase(dataFieldMeta.getFieldType())){
             sql.append(dataFieldMeta.getFieldName())
-                    .append(" int");
-            if (dataFieldMeta.getFieldSize() != null) {
-                sql.append("(")
-                        .append(dataFieldMeta.getFieldSize())
-                        .append(") ");
-            }
-        } else if ("Long".equalsIgnoreCase(dataFieldMeta.getFieldType())){
-            sql.append(dataFieldMeta.getFieldName())
-                    .append(" bigint");
-            if (dataFieldMeta.getFieldSize() != null) {
-                sql.append("(")
-                        .append(dataFieldMeta.getFieldSize())
-                        .append(") ");
-            }
-        } else if ("double".equalsIgnoreCase(dataFieldMeta.getFieldType())){
-            sql.append(dataFieldMeta.getFieldName())
-                    .append(" double(")
+                    .append(" NUMBER(")
+                    .append("(")
                     .append(dataFieldMeta.getFieldSize())
-                    .append(",")
-                    .append(dataFieldMeta.getDecimalDigits())
                     .append(") ");
-        } else if ("bigDecimal".equalsIgnoreCase(dataFieldMeta.getFieldType())){
+        } else if ("double".equalsIgnoreCase(dataFieldMeta.getFieldType()) || "bigDecimal".equalsIgnoreCase(dataFieldMeta.getFieldType())){
             sql.append(dataFieldMeta.getFieldName())
-                    .append(" decimal(")
+                    .append(" NUMBER(")
                     .append(dataFieldMeta.getFieldSize())
                     .append(",")
                     .append(dataFieldMeta.getDecimalDigits())
                     .append(") ");
         } else if ("text".equalsIgnoreCase(dataFieldMeta.getFieldType())){
             sql.append(dataFieldMeta.getFieldName())
-                    .append(" text ");
+                    .append(" CLOB ");
         } else if ("blob".equalsIgnoreCase(dataFieldMeta.getFieldType())){
             sql.append(dataFieldMeta.getFieldName())
-                    .append(" blob ");
-
+                    .append(" BLOB ");
         }
-
-        // 判断是否可以为null添加语句
-        sql.append(getFieldNullInfo(dataFieldMeta.getIsNullable()));
 
         // 添加默认值语句
         if (StringUtils.isNotEmpty(dataFieldMeta.getFieldDefault())){
             sql.append(" DEFAULT ")
-                    .append(dataFieldMeta.getFieldDefault());
+                    .append(dataFieldMeta.getFieldDefault())
+                    .append(" ");
         }
+
+        sql.append(getFieldNullInfo(dataFieldMeta.getIsNullable()));
 
         return sql.toString();
     }
 
     private String getFieldNullInfo(Integer isNullable){
-       return isNullable == YesOrNoEnum.YES.getValue() ? "NULL" : "NOT NULL";
+        return isNullable == YesOrNoEnum.YES.getValue() ? "NULL" : "NOT NULL";
     }
+
 }

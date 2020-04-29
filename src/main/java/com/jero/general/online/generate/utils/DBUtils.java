@@ -48,6 +48,12 @@ public class DBUtils {
         return conn;
     }
 
+    /**
+     * 关闭数据库连接、编译语句、结果集等
+     * @param conn
+     * @param stat
+     * @param rs
+     */
     public static void close(Connection conn, Statement stat, ResultSet rs){
         if (rs != null){
             try {
