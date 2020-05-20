@@ -8,6 +8,18 @@ import com.jero.general.online.generate.service.DBTableHandler;
 /**
  * mysql数据库针对字段操作sql的具体实现
  *
+ * 示例：
+ * CREATE TABLE `sys_user` (
+ * `id`  bigint NOT NULL ,
+ * `name`  varchar(30) NULL COMMENT '姓名' ,
+ * `age`  int NULL COMMENT '年龄' ,
+ * `status`  int NULL DEFAULT 1 COMMENT '状态' ,
+ *
+ *
+ * PRIMARY KEY (`id`)
+ * )
+ * ;
+ *
  * @Author lixuetao
  * @Date 2020/4/28
  **/
