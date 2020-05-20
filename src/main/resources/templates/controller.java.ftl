@@ -42,14 +42,14 @@ public class ${table.controllerName} extends BaseController<${entity}EO> {
     private ${table.serviceName} ${"${entity}"?uncap_first}Service;
 
     @ApiOperation("|${entity}EO|查询${table.comment!}列表")
-    @GetMapping(value = "/list", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/list")
     public ResponseMessage<List<${entity}EO>> getList(${entity}EO ${"${entity}"?uncap_first}){
         List<${entity}EO> ${"${entity}List"?uncap_first} = super.list(${"${entity}"?uncap_first});
         return Result.success(${"${entity}List"?uncap_first});
     }
 
     @ApiOperation("|${entity}EO|查询${table.comment!}分页")
-    @GetMapping(value = "/page", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/page")
     public ResponseMessage<PageInfo<${entity}EO>> getPage(${entity}EO ${"${entity}"?uncap_first}, PageInfo pageInfo){
         PageInfo<${entity}EO> ${"${entity}Page"?uncap_first} = super.page(pageInfo, ${"${entity}"?uncap_first});
         return Result.success(${"${entity}Page"?uncap_first});
