@@ -8,8 +8,7 @@ import com.jero.general.online.service.CodeDatabaseInfoService;
 import com.jero.general.online.service.CodeHtmlInfoService;
 import com.jero.general.online.service.CodeIndexInfoService;
 import com.jero.general.online.vo.CodeAllInfoVO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,9 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
  **/
 @Service
 @Transactional
+@Slf4j
 public class CodeAllInfoServiceImpl implements CodeAllInfoService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(CodeAllInfoServiceImpl.class);
 
     @Autowired
     private CodeBaseInfoService baseInfoService;

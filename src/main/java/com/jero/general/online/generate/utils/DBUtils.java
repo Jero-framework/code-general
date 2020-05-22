@@ -1,9 +1,7 @@
 package com.jero.general.online.generate.utils;
 
-import com.jero.general.online.controller.CodeAllInfoController;
 import com.jero.general.online.generate.enums.DriverEnum;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,9 +14,8 @@ import java.sql.Statement;
  * @Author lixuetao
  * @Date 2020/4/27
  **/
+@Slf4j
 public class DBUtils {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(DBUtils.class);
 
     private static Connection conn;
 
@@ -35,13 +32,13 @@ public class DBUtils {
             Class.forName(driveName);
             conn = DriverManager.getConnection(url, username, password);
         } catch (Exception  e) {
-            LOGGER.info("数据库连接失败", e);
+            log.info("数据库连接失败", e);
         } finally {
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException throwables) {
-                    LOGGER.info("数据库连接关闭失败", throwables);
+                    log.info("数据库连接关闭失败", throwables);
                 }
             }
         }
@@ -59,7 +56,7 @@ public class DBUtils {
             try {
                 rs.close();
             } catch (SQLException throwables) {
-                LOGGER.info("结果集关闭失败", throwables);
+                log.info("结果集关闭失败", throwables);
             }
         }
 
@@ -67,7 +64,7 @@ public class DBUtils {
             try {
                 stat.close();
             } catch (SQLException throwables) {
-                LOGGER.info("数据库语句关闭失败", throwables);
+                log.info("数据库语句关闭失败", throwables);
             }
         }
 
@@ -75,7 +72,7 @@ public class DBUtils {
             try {
                 conn.close();
             } catch (SQLException throwables) {
-                LOGGER.info("数据库连接关闭失败", throwables);
+                log.info("数据库连接关闭失败", throwables);
             }
         }
     }

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.jero.mp.entity.BaseEntity;
+import lombok.Data;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ import javax.validation.constraints.NotNull;
 */
 @ApiModel(value="CodeDatabaseInfo实体", description="表对应的数据库属性")
 @TableName("code_database_info")
+@Data
 public class CodeDatabaseInfoEO extends BaseEntity<CodeDatabaseInfoEO>{
 
     @TableId("id")
@@ -58,91 +60,5 @@ public class CodeDatabaseInfoEO extends BaseEntity<CodeDatabaseInfoEO>{
 
     @TableField("base_info_id")
     private Long baseInfoId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFieldName() {
-        return fieldName;
-    }
-
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
-
-    public String getFieldDescription() {
-        return fieldDescription;
-    }
-
-    public void setFieldDescription(String fieldDescription) {
-        this.fieldDescription = fieldDescription;
-    }
-
-    public Integer getFieldLength() {
-        return fieldLength;
-    }
-
-    public void setFieldLength(Integer fieldLength) {
-        this.fieldLength = fieldLength;
-    }
-
-    public Integer getFieldPoint() {
-        return fieldPoint;
-    }
-
-    public void setFieldPoint(Integer fieldPoint) {
-        this.fieldPoint = fieldPoint;
-    }
-
-    public String getFieldType() {
-        return fieldType;
-    }
-
-    public void setFieldType(String fieldType) {
-        this.fieldType = fieldType;
-    }
-
-    public Integer getIsPrimaryKey() {
-        return isPrimaryKey;
-    }
-
-    public void setIsPrimaryKey(Integer isPrimaryKey) {
-        this.isPrimaryKey = isPrimaryKey;
-    }
-
-    public Integer getIsNull() {
-        return isNull;
-    }
-
-    public void setIsNull(Integer isNull) {
-        this.isNull = isNull;
-    }
-
-    public Long getBaseInfoId() {
-        return baseInfoId;
-    }
-
-    public void setBaseInfoId(Long baseInfoId) {
-        this.baseInfoId = baseInfoId;
-    }
-
-    @Override
-    public String toString() {
-        return "CodeDatabaseInfo{" +
-            "id=" + id +
-            ", fieldName=" + fieldName +
-            ", fieldDescription=" + fieldDescription +
-            ", fieldLength=" + fieldLength +
-            ", fieldPoint=" + fieldPoint +
-            ", fieldType=" + fieldType +
-            ", isPrimaryKey=" + isPrimaryKey +
-            ", isNull=" + isNull +
-        "}";
-    }
 
 }

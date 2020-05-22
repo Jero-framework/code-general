@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.jero.mp.entity.BaseEntity;
+import lombok.Data;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ import javax.validation.constraints.NotNull;
 */
 @ApiModel(value="CodeHtmlInfo实体", description="表对应的html页面属性")
 @TableName("code_html_info")
+@Data
 public class CodeHtmlInfoEO extends BaseEntity<CodeHtmlInfoEO>{
 
     @TableId("id")
@@ -76,118 +78,5 @@ public class CodeHtmlInfoEO extends BaseEntity<CodeHtmlInfoEO>{
 
     @TableField("base_info_id")
     private Long baseInfoId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFieldName() {
-        return fieldName;
-    }
-
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
-
-    public String getFieldDescription() {
-        return fieldDescription;
-    }
-
-    public void setFieldDescription(String fieldDescription) {
-        this.fieldDescription = fieldDescription;
-    }
-
-    public Integer getIsReadonly() {
-        return isReadonly;
-    }
-
-    public void setIsReadonly(Integer isReadonly) {
-        this.isReadonly = isReadonly;
-    }
-
-    public Integer getFieldWidget() {
-        return fieldWidget;
-    }
-
-    public void setFieldWidget(Integer fieldWidget) {
-        this.fieldWidget = fieldWidget;
-    }
-
-    public String getFiledDic() {
-        return filedDic;
-    }
-
-    public void setFiledDic(String filedDic) {
-        this.filedDic = filedDic;
-    }
-
-    public Integer getFiledLength() {
-        return filedLength;
-    }
-
-    public void setFiledLength(Integer filedLength) {
-        this.filedLength = filedLength;
-    }
-
-    public Integer getIsQuery() {
-        return isQuery;
-    }
-
-    public void setIsQuery(Integer isQuery) {
-        this.isQuery = isQuery;
-    }
-
-    public Integer getIsRequired() {
-        return isRequired;
-    }
-
-    public void setIsRequired(Integer isRequired) {
-        this.isRequired = isRequired;
-    }
-
-    public Integer getValidRule() {
-        return validRule;
-    }
-
-    public void setValidRule(Integer validRule) {
-        this.validRule = validRule;
-    }
-
-    public String getRegex() {
-        return regex;
-    }
-
-    public void setRegex(String regex) {
-        this.regex = regex;
-    }
-
-    public Long getBaseInfoId() {
-        return baseInfoId;
-    }
-
-    public void setBaseInfoId(Long baseInfoId) {
-        this.baseInfoId = baseInfoId;
-    }
-
-    @Override
-    public String toString() {
-        return "CodeHtmlInfo{" +
-            "id=" + id +
-            ", fieldName=" + fieldName +
-            ", fieldDescription=" + fieldDescription +
-            ", isReadonly=" + isReadonly +
-            ", fieldWidget=" + fieldWidget +
-            ", filedDic=" + filedDic +
-            ", filedLength=" + filedLength +
-            ", isQuery=" + isQuery +
-            ", isRequired=" + isRequired +
-            ", validRule=" + validRule +
-            ", regex=" + regex +
-        "}";
-    }
 
 }

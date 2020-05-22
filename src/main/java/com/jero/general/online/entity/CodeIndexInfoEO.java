@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.jero.mp.entity.BaseEntity;
+import lombok.Data;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ import javax.validation.constraints.NotNull;
 */
 @ApiModel(value="CodeIndexInfo实体", description="表对应的索引信息")
 @TableName("code_index_info")
+@Data
 public class CodeIndexInfoEO extends BaseEntity<CodeIndexInfoEO>{
 
     @TableId("id")
@@ -40,55 +42,5 @@ public class CodeIndexInfoEO extends BaseEntity<CodeIndexInfoEO>{
 
     @TableField("base_info_id")
     private Long baseInfoId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getIndexName() {
-        return indexName;
-    }
-
-    public void setIndexName(String indexName) {
-        this.indexName = indexName;
-    }
-
-    public Long getIndexFiled() {
-        return indexFiled;
-    }
-
-    public void setIndexFiled(Long indexFiled) {
-        this.indexFiled = indexFiled;
-    }
-
-    public String getIndexType() {
-        return indexType;
-    }
-
-    public void setIndexType(String indexType) {
-        this.indexType = indexType;
-    }
-
-    public Long getBaseInfoId() {
-        return baseInfoId;
-    }
-
-    public void setBaseInfoId(Long baseInfoId) {
-        this.baseInfoId = baseInfoId;
-    }
-
-    @Override
-    public String toString() {
-        return "CodeIndexInfo{" +
-            "id=" + id +
-            ", indexName=" + indexName +
-            ", indexFiled=" + indexFiled +
-            ", indexType=" + indexType +
-        "}";
-    }
 
 }

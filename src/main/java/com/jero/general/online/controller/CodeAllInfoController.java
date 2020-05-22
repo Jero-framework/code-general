@@ -1,7 +1,6 @@
 package com.jero.general.online.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jero.core.controller.BaseController;
 import com.jero.general.online.entity.CodeBaseInfoEO;
@@ -13,8 +12,7 @@ import com.jero.http.Result;
 import com.jero.http.page.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,9 +35,8 @@ import java.util.List;
 @Api("代码生成器所有信息的对接接口")
 @RestController
 @RequestMapping("/${restPath}/codeAllInfo")
+@Slf4j
 public class CodeAllInfoController extends BaseController<CodeBaseInfoEO> {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(CodeAllInfoController.class);
 
     @Autowired
     CodeAllInfoService allInfoService;
