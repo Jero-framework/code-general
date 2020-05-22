@@ -3,19 +3,23 @@ package com.jero.general.online.generate.service.impl;
 import com.jero.common.utils.StringUtils;
 import com.jero.enums.YesOrNoEnum;
 import com.jero.general.online.generate.meta.DataFieldMeta;
+import com.jero.general.online.generate.meta.TableMeta;
 import com.jero.general.online.generate.service.DBTableHandler;
+
+import java.util.List;
 
 /**
  * mysql数据库针对字段操作sql的具体实现
  *
  * 示例：
- * CREATE TABLE `sys_user` (
+ * CREATE TABLE `NewTable` (
  * `id`  bigint NOT NULL ,
- * `name`  varchar(30) NULL COMMENT '姓名' ,
- * `age`  int NULL COMMENT '年龄' ,
- * `status`  int NULL DEFAULT 1 COMMENT '状态' ,
- *
- *
+ * `age`  int NULL ,
+ * `price`  decimal(10,2) NOT NULL ,
+ * `name`  varchar(50) NOT NULL ,
+ * `desc`  text NULL COMMENT '描述' ,
+ * `sales`  double(10,2) NULL COMMENT '销售量' ,
+ * `status`  tinyint NULL DEFAULT 1 COMMENT '状态' ,
  * PRIMARY KEY (`id`)
  * )
  * ;
@@ -24,6 +28,10 @@ import com.jero.general.online.generate.service.DBTableHandler;
  * @Date 2020/4/28
  **/
 public class MysqlTableHandlerImpl implements DBTableHandler {
+
+    public String buildCreateSql(TableMeta tableMeta, List<String> fieldSql){
+        return "";
+    }
 
     @Override
     public String getAddFieldSql(DataFieldMeta fieldMeta) {
