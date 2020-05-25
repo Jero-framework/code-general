@@ -80,7 +80,7 @@ public class ${table.controllerName} extends BaseController<${entity}EO> {
     }
 
     @Override
-    protected void expandQuery(QueryWrapper query) {
+    protected void expandQuery(QueryWrapper query, ${entity}EO data) {
 
     }
 
