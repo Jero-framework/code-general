@@ -37,7 +37,7 @@ public class ${entity}EO extends BaseEntity<${entity}EO>{
     <#if field.keyFlag>
     <#-- 主键 -->
         <#if field.keyIdentityFlag>
-    @TableId(value = "${field.name}", type = IdType.AUTO)
+    @TableId(value = "${field.name}")
         <#elseif idType??>
     @TableId(value = "${field.name}", type = IdType.${idType})
         <#elseif field.convert>
